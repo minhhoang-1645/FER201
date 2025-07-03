@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router";
 
 const Header = () => {
   const [MenuOpen, setMenuOpen] = useState(false);
@@ -6,10 +7,10 @@ const Header = () => {
     setMenuOpen(!MenuOpen);
   };
   const navLinks = [
-    { label: "Home", href: "#home" },
-    { label: "Health Library", href: "#library" },
-    { label: "Blog", href: "#blog" },
-    { label: "Contact", href: "#contact" },
+    { label: "Home", path: "#home" },
+    { label: "Health Library", path: "#library" },
+    { label: "Blog", path: "#blog" },
+    { label: "Contact", path: "#contact" },
   ];
 
   return (
@@ -22,14 +23,14 @@ const Header = () => {
           <ul className="hidden md:flex space-x-8">
             {navLinks.map((link, index) => (
               <li key={index}>
-                <a
-                  href={link.href}
+                <Link
+                  to={link.path}
                   className="text-gray-700 hover:text-pink-600 transition-colors duration-200
                       focus:outline-none focus:ring-pink-600 focus:rounded"
                 >
                   {" "}
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -74,13 +75,13 @@ const Header = () => {
               <ul className="flex flex-col space-y-4">
                 {navLinks.map((link, index) => (
                   <li key={index}>
-                    <a
-                      href={link.href}
+                <Link
+                      to={link.path}
                       className="text-gray-700 hover:text-pink-600 transition-colors duration-200 
                           py-2 px-2 focus:outline-none focus:ring-pink-600 focus:rounded"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -88,10 +89,14 @@ const Header = () => {
           </aside>
         )}
           <nav>
-            <a aria-label="Login" className="bg-white border-2 border-blue-300 px-8 py-2 text-gray-700 hover:text-pink-600 transition-colors duration-200
-               rounded-full focus:outline-none focus:ring-pink-600 focus:rounded ">
-              Login
-            </a>
+          <Link
+              to="/login"
+              aria-label="Login"
+              className="bg-white border-2 border-blue-300 px-8 py-2 text-gray-700 hover:text-pink-600 transition-colors duration-200
+               rounded-full focus:outline-none focus:ring-pink-600 focus:rounded"
+                     >
+                  Login
+            </Link>
           </nav>
       </div>
     </header>
